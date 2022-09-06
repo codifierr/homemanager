@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  configs.yaml: |+
+    telegram:
+      token: "token"
+      chat_id: "chatid"
+    mqtt:
+      host: address
+      port: port
+      username:
+      password:
+    devices:
+    - _id: EspPumpController
+      name: PumpController
+      enabled: true
+      type: SmartPlug
+      mqtt_stats_topic: pump/cont/p
+      mqtt_config_topic: pump/cont/r
+      commands:
+        start: TurnOn
+        stop: TurnOff
+        stats: Stats
+
+kind: ConfigMap
+metadata:
+  name: home-manager
+  namespace: default

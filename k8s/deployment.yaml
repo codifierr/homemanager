@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-manager
+  labels:
+    app: home-manager
+    service: home-manager
+spec:
+  ports:
+  - name: http-home-manager
+    port: 9185
+    targetPort: 9185
+  selector:
+    app: home-manager
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home-manager
+      version: v0.0.1
+  template:
+    metadata:
+      labels:
+        app: home-manager
+        version: v0.0.1
+      annotations:
+        prometheus.io.scrape: "true"
+        prometheus.io.port: "9185"
+        prometheus.io.path: "/metrics"
+    spec:
+      containers:
+      - image: ssingh3339/home-manager:latest
+        imagePullPolicy: IfNotPresent
+        name: home-manager
+        volumeMounts:
+        - name: config-volume
+          mountPath: /tmp/config
+        ports:
+        - containerPort: 9185
+        resources: 
+            limits: 
+              cpu: ".5"
+              memory: 100Mi
+            requests: 
+              cpu: ".25"
+              memory: 50Mi
+      volumes:
+      - name: config-volume
+        configMap:
+          # Provide the name of the ConfigMap containing the files you want
+          # to add to the container
+          name: home-manager
