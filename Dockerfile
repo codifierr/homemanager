@@ -5,8 +5,8 @@ RUN mkdir /gobin/
 RUN apk update \
     && apk upgrade \
     && apk add --no-cache libc-dev \
-    && apk add --no-cache \
-    ca-certificates \
+    && apk add --no-cache ca-certificates \
+    && apk add libc6-compat \
     && update-ca-certificates 2>/dev/null || true
 
 COPY homemanager /gobin
