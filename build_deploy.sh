@@ -48,13 +48,3 @@ else
   exit $status
 fi
 
-# build local docker image
-docker build -t ssingh3339/home-manager image/.
-
-# deploy ratelimit-processor.yaml
-
-# delete earlier deployment
-kubectl delete -f k8s/.
-
-kubectl apply -f k8s/.
-
