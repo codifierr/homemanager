@@ -49,7 +49,7 @@ jobs:
         run: go test -v ./...
     
       - name: Build the Docker image
-        run: docker build . --file image/Dockerfile --tag ssingh3339/home-manager:latest
+        run: docker build . --file Dockerfile --tag ssingh3339/home-manager:latest
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
