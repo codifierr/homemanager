@@ -9,6 +9,7 @@ RUN apk update \
     && update-ca-certificates 2>/dev/null || true
 
 RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache gcompat
 
 COPY /lib64/ld-linux-x86-64.so.2 /lib/
 COPY homemanager /gobin
