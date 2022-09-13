@@ -6,7 +6,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache libc-dev \
     && apk add --no-cache ca-certificates \
-    && apk add libc6-compat \
+    && apk add --no-cache libc6-compat \
     && update-ca-certificates 2>/dev/null || true
 
 COPY /lib64/ld-linux-x86-64.so.2 /lib/
