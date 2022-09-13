@@ -11,7 +11,7 @@ RUN apk update \
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache gcompat
 
-COPY /lib64/ld-linux-x86-64.so.2 /lib/
+# COPY /lib64/ld-linux-x86-64.so.2 /lib/
 COPY homemanager /gobin
 
 WORKDIR /gobin
