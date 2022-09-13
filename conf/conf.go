@@ -27,14 +27,13 @@ type Config struct {
 	Devices  []Devices `json:"devices"`
 }
 type Telegram struct {
-	Token  string `json:"token"`
-	ChatID int64  `json:"chat_id"`
+	Token string `json:"token"`
 }
 type Mqtt struct {
-	Host     string      `json:"host"`
-	Port     int         `json:"port"`
-	Username interface{} `json:"username"`
-	Password interface{} `json:"password"`
+	Host     string `json:"host"`
+	Port     int    `json:"port"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 type Commands struct {
 	Start string `json:"start"`
@@ -42,11 +41,11 @@ type Commands struct {
 	Stats string `json:"stats"`
 }
 type Devices struct {
-	ID              string   `json:"_id"`
+	ID              string   `json:"id"`
 	Name            string   `json:"name"`
 	Enabled         bool     `json:"enabled"`
 	Type            string   `json:"type"`
 	MqttStatsTopic  string   `json:"mqtt_stats_topic"`
 	MqttConfigTopic string   `json:"mqtt_config_topic"`
-	Commands        Commands `json:"commands,omitempty"`
+	Commands        Commands `json:"commands"`
 }
