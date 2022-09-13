@@ -43,7 +43,7 @@ jobs:
           go-version: 1.18
 
       - name: Build
-        run: go build -o image/homemanager main.go
+        run: go build -o homemanager main.go
 
       - name: Test
         run: go test -v ./...
