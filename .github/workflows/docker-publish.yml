@@ -36,6 +36,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Build
+        run: go build -o image/homemanager main.go
+
+      - name: Test
+        run: go test -v ./...
+    
+      - name: Build the Docker image
+        run: docker build . --file image/Dockerfile --tag ssingh3339/home-manager:latest
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
