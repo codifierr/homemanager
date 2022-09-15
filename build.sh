@@ -34,7 +34,7 @@ else
   exit $status
 fi
 
-env GOOS=linux GOARCH=arm64 go build -o image/homemanager main.go
+env GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o image/homemanager main.go
 
 status=$?
 ## get status ##
@@ -47,4 +47,3 @@ else
   echo "Error: Compilation Failed."
   exit $status
 fi
-
